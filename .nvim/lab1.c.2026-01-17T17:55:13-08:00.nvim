@@ -1,0 +1,30 @@
+#define _POSIX_C_SOURCE 200809L
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void) {
+  char *line = NULL;
+  size_t len = 0;
+  ssize_t nread;
+
+  char *token;
+  char *saveptr;
+
+  printf("Please Enter Some Text: ");
+  nread = getline(&line, &len, stdin);
+  if (nread == -1) {
+    perror("ERROR: getline failed");
+    free(line);
+    exit(EXIT_FAILURE);
+  }
+
+  token = strtok_r(line, " ", &saveptr);
+  while (token != NULL) {
+    printf("%s\n", token);
+    token = strtok_r(NULL, " ", &saveptr);
+  }
+
+  free(line);
+  return 0;
+}
