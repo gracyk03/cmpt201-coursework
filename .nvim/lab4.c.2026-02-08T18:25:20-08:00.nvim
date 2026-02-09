@@ -1,0 +1,15 @@
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+struct node {
+  uint64_t size;
+  struct node *next;
+};
+
+int main(void) {
+  void *header = sbrk(0);
+  printf("first program break address: %p\n", header);
+}

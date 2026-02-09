@@ -1,0 +1,36 @@
+#define _GNU_SOURCE
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+struct header {
+  uint64_t size;
+  struct header *next;
+};
+
+int main(void) {
+  void *startad = sbrk(0);
+  printf("first program break address: %p\n", startad);
+
+  void *block = sbrk(256);
+  if(block ==(void *) -1){
+    perror("sbrk failed");
+    free(startad);
+    free(block);
+    exit(EXIT_FAILURE);
+  }
+  struct header *headB1 = (struct header *)b1Add
+  headB1->size = 128;
+  headB1->next = NULL;
+
+  struct header *headB2 = (struct header *)((char *)b1Add + 256);
+  headB2->size = 128;
+  headB2->next = headB1;
+
+  void *
+
+  
+
+}
